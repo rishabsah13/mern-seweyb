@@ -43,7 +43,9 @@ app.all("*", (req, res) => {
 });
 
 app.use(errorHandler);
-
+app.use(
+  cors({ origin: "https://dashboard1313.onrender.com", credentials: true })
+);
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
